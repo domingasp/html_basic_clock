@@ -49,8 +49,15 @@ html, body {
     height: 100%;
 }
 
+.container {
+    width: 100%;
+    padding-bottom: 100%;
+}
+
 #clockCanvas {
     position: absolute;
-    width: 100%;
-    height: 100%;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
 }
