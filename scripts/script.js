@@ -24,13 +24,9 @@ window.setInterval(function() {
     var time = new Date();
 
     // Sets web elements to variables for manipulation
-    var currentTimeLabel = document.getElementById("currentTimeP");
     var currentTimeCanvas = document.getElementById("clockCanvas");
     var ctx = currentTimeCanvas.getContext("2d");
     
-    // Sets the time label to the current time
-    currentTimeLabel.innerHTML = time.toLocaleTimeString();
-
     // Calculates the different angles for seconds, minutes, hours, days and months for the arcs.
     secondsAngle = (time.getSeconds() * 6) - 90;
     minutesAngle = (time.getMinutes() * 6) - 90;
@@ -44,23 +40,23 @@ window.setInterval(function() {
     
     // Draws multiple separate arcs; seconds, minutes, hours, days and months (in that order)
     ctx.beginPath();
-    ctx.arc(100, 75, 50, (-90 / 180) * Math.PI, (secondsAngle / 180) * Math.PI);
+    ctx.arc(currentTimeCanvas.width * 0.5, currentTimeCanvas.height * 0.5, (currentTimeCanvas.height * 0.25), (-90 / 180) * Math.PI, (secondsAngle / 180) * Math.PI);
     ctx.stroke();
 
     ctx.beginPath();
-    ctx.arc(100, 75, 45, (-90 / 180) * Math.PI, (minutesAngle / 180) * Math.PI);
+    ctx.arc(currentTimeCanvas.width * 0.5, currentTimeCanvas.height * 0.5, (currentTimeCanvas.height * 0.225), (-90 / 180) * Math.PI, (minutesAngle / 180) * Math.PI);
     ctx.stroke();
 
     ctx.beginPath();
-    ctx.arc(100, 75, 40, (-90 / 180) * Math.PI, (hoursAngle / 180) * Math.PI);
+    ctx.arc(currentTimeCanvas.width * 0.5, currentTimeCanvas.height * 0.5, (currentTimeCanvas.height * 0.20), (-90 / 180) * Math.PI, (hoursAngle / 180) * Math.PI);
     ctx.stroke();
 
     ctx.beginPath();
-    ctx.arc(100, 75, 35, (-90 / 180) * Math.PI, (daysAngle / 180) * Math.PI);
+    ctx.arc(currentTimeCanvas.width * 0.5, currentTimeCanvas.height * 0.5, (currentTimeCanvas.height * 0.175), (-90 / 180) * Math.PI, (daysAngle / 180) * Math.PI);
     ctx.stroke();
 
     ctx.beginPath();
-    ctx.arc(100, 75, 30, (-90 / 180) * Math.PI, (monthsAngle / 180) * Math.PI);
+    ctx.arc(currentTimeCanvas.width * 0.5, currentTimeCanvas.height * 0.5, (currentTimeCanvas.height * 0.15), (-90 / 180) * Math.PI, (monthsAngle / 180) * Math.PI);
     ctx.stroke();
 
 }, 1000);
