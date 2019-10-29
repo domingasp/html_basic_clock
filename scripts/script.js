@@ -26,7 +26,7 @@ window.setInterval(function() {
     // Sets web elements to variables for manipulation
     var currentTimeCanvas = document.getElementById("clockCanvas");
     var ctx = currentTimeCanvas.getContext("2d");
-    
+
     // Calculates the different angles for seconds, minutes, hours, days and months for the arcs.
     secondsAngle = (time.getSeconds() * 6) - 90;
     minutesAngle = (time.getMinutes() * 6) - 90;
@@ -37,26 +37,32 @@ window.setInterval(function() {
 
     // Clears the canvas
     ctx.clearRect(0, 0, currentTimeCanvas.width, currentTimeCanvas.height);
+    ctx.lineWidth = 8;
     
     // Draws multiple separate arcs; seconds, minutes, hours, days and months (in that order)
     ctx.beginPath();
-    ctx.arc(currentTimeCanvas.width * 0.5, currentTimeCanvas.height * 0.5, (currentTimeCanvas.height * 0.25), (-90 / 180) * Math.PI, (secondsAngle / 180) * Math.PI);
+    ctx.arc(currentTimeCanvas.width * 0.5, currentTimeCanvas.height * 0.5, (currentTimeCanvas.height * 0.35), (-90 / 180) * Math.PI, (secondsAngle / 180) * Math.PI);
+    ctx.strokeStyle = "red";
     ctx.stroke();
 
     ctx.beginPath();
-    ctx.arc(currentTimeCanvas.width * 0.5, currentTimeCanvas.height * 0.5, (currentTimeCanvas.height * 0.225), (-90 / 180) * Math.PI, (minutesAngle / 180) * Math.PI);
+    ctx.arc(currentTimeCanvas.width * 0.5, currentTimeCanvas.height * 0.5, (currentTimeCanvas.height * 0.28), (-90 / 180) * Math.PI, (minutesAngle / 180) * Math.PI);
+    ctx.strokeStyle = "blue";
     ctx.stroke();
 
     ctx.beginPath();
-    ctx.arc(currentTimeCanvas.width * 0.5, currentTimeCanvas.height * 0.5, (currentTimeCanvas.height * 0.20), (-90 / 180) * Math.PI, (hoursAngle / 180) * Math.PI);
+    ctx.arc(currentTimeCanvas.width * 0.5, currentTimeCanvas.height * 0.5, (currentTimeCanvas.height * 0.21), (-90 / 180) * Math.PI, (hoursAngle / 180) * Math.PI);
+    ctx.strokeStyle = "green";
     ctx.stroke();
 
     ctx.beginPath();
-    ctx.arc(currentTimeCanvas.width * 0.5, currentTimeCanvas.height * 0.5, (currentTimeCanvas.height * 0.175), (-90 / 180) * Math.PI, (daysAngle / 180) * Math.PI);
+    ctx.arc(currentTimeCanvas.width * 0.5, currentTimeCanvas.height * 0.5, (currentTimeCanvas.height * 0.14), (-90 / 180) * Math.PI, (daysAngle / 180) * Math.PI);
+    ctx.strokeStyle = "magenta";
     ctx.stroke();
 
     ctx.beginPath();
-    ctx.arc(currentTimeCanvas.width * 0.5, currentTimeCanvas.height * 0.5, (currentTimeCanvas.height * 0.15), (-90 / 180) * Math.PI, (monthsAngle / 180) * Math.PI);
+    ctx.arc(currentTimeCanvas.width * 0.5, currentTimeCanvas.height * 0.5, (currentTimeCanvas.height * 0.07), (-90 / 180) * Math.PI, (monthsAngle / 180) * Math.PI);
+    ctx.strokeStyle = "orange";
     ctx.stroke();
 
 }, 1000);
