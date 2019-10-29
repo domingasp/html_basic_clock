@@ -1,3 +1,23 @@
+// Check if the passed in year is a leap year
+function leapYear(year) {
+  return ((year % 4 == 0) && (year % 100 != 0)) || (year % 400 == 0);
+}
+
+// Calculates the angle for the amount of days in the current month
+function getDaysAngle(month, year) {
+    if (month == 1 || month == 3 || month == 5 || month == 7 || month == 8 || month == 10 || month == 12) {
+        return 360 / 31;
+    } else if (month == 2) {
+        if (leapYear(year)) {
+            return 360 / 29;
+        } else {
+            return 360 / 28;
+        }
+    }
+
+    return 360 / 30;
+}
+
 // Sets an interval of 1 second
 window.setInterval(function() {
     // Gets the current time
@@ -16,13 +36,7 @@ window.setInterval(function() {
     minutesAngle = (time.getMinutes() * 6) - 90;
     hoursAngle = (time.getHours() * 15) - 90;
 
-    daysAngle = (time.getDate() * 12) - 90;
-    if (time.getMonth() == 1 || time.getMonth() == 3 || time.getMonth() == 5 || time.getMonth() == 7 || time.getMonth() == 8 || time.getMonth() == 10 || time.getMonth() == 12) {
-        daysAngle = (time.getDate() * 11.6) - 90;
-    } else if (time.getMonth() == 2) {
-        daysAngle = (time.getDate() * 12.8) - 90;
-    }
-
+    daysAngle = (time.getDate() * getDaysAngle(time.getMonth(), time.getFullYear())) - 90;
     monthsAngle = ((time.getMonth() + 1) * 30) - 90;
 
     // Clears the canvas
